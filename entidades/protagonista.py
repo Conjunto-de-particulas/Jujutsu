@@ -24,7 +24,7 @@ class Protagonista:
         if down == True:
             self.x -= self.speed
             self.y += self.speed//2
-            
+                        
     def calculate_coordinates(self, math, p, p2, mouseX, mouseY, deltaX, deltaY, rombo_width, rombo_height, map_origin):
         p[0] = math.floor(mouseX/rombo_width)
         p[1] = math.floor(mouseY/rombo_height)

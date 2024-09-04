@@ -5,6 +5,7 @@ import random
 from entidades.protagonista import Protagonista
 from util.tile_images import Tile_Images
 from util.entity_images import Entity_Images
+from util.some_methods import Some_Methods
 
 rombo_height = 40
 rombo_width = 80
@@ -55,11 +56,6 @@ def draw_tile(surface, color, color2,isoX, isoY):
                                                         isoY + rombo_height*3 + rombo_height//2 + 44),
                                          (isoX + screen_width // 2 - rombo_width//2, 
                                                         isoY + rombo_height*3 + rombo_height//2)], 1)
-    
-def draw_grid():
-    #for y in range(screen_height//rombo_height):
-        #for x in range(screen_width//rombo_width):
-    pygame.draw.rect(screen, (255, 255, 255), (p[0]*rombo_width + deltaX, p[1]*rombo_height + deltaY, rombo_width , rombo_height ), 1)
     
 def generate_map():
     map = []
@@ -170,7 +166,7 @@ while running:
         screen.blit(superficie_texto, (50,150))
 
     if showGrid == True:
-        draw_grid()
+        Some_Methods.draw_grid(pygame.draw.rect, screen, p, rombo_width, rombo_height, deltaX, deltaY)
           
     pygame.display.flip() 
 
