@@ -9,63 +9,7 @@ from util.some_methods import Some_Methods
 
 rombo_height = 40
 rombo_width = 80
-
-def cart_to_iso(x, y, size):
-    isoX = (x - y) * size
-    isoY = (x + y) * size // 2
-    return isoX, isoY
-
-def draw_tile(surface, color, color2,isoX, isoY):
-    isoX += random.randint(0, 0)
-    isoY += random.randint(0, 0)
-    pygame.draw.polygon(surface, color, [(isoX + screen_width // 2, isoY + rombo_height*3), 
-                                                        (isoX + screen_width // 2 + rombo_width//2, 
-                                                        isoY + rombo_height*3 + rombo_height//2),
-                                                        (isoX + screen_width // 2, isoY + rombo_height*3 + rombo_height),
-                                                        (isoX + screen_width // 2 - rombo_width//2, 
-                                                        isoY + rombo_height*3 + rombo_height//2)])
-    pygame.draw.polygon(surface, color2, [(isoX + screen_width // 2, isoY + rombo_height*3), 
-                                                        (isoX + screen_width // 2 + rombo_width//2, 
-                                                        isoY + rombo_height*3 + rombo_height//2),
-                                                        (isoX + screen_width // 2, isoY + rombo_height*3 + rombo_height),
-                                                        (isoX + screen_width // 2 - rombo_width//2, 
-                                                        isoY + rombo_height*3 + rombo_height//2)],1)
-    
-    pygame.draw.polygon(surface, color, [(isoX + screen_width // 2 + rombo_width//2, 
-                                                        isoY + rombo_height*3 + rombo_height//2),
-                                         (isoX + screen_width // 2 + rombo_width//2, 
-                                                        isoY + rombo_height*3 + rombo_height//2 + 44),
-                                         (isoX + screen_width // 2, isoY + rombo_height*3 + rombo_height + 44),
-                                         (isoX + screen_width // 2, isoY + rombo_height*3 + rombo_height)])
-    pygame.draw.polygon(surface, color2, [(isoX + screen_width // 2 + rombo_width//2, 
-                                                        isoY + rombo_height*3 + rombo_height//2),
-                                         (isoX + screen_width // 2 + rombo_width//2, 
-                                                        isoY + rombo_height*3 + rombo_height//2 + 44),
-                                         (isoX + screen_width // 2, isoY + rombo_height*3 + rombo_height + 44),
-                                         (isoX + screen_width // 2, isoY + rombo_height*3 + rombo_height)], 1)
-    
-    pygame.draw.polygon(surface, color, [(isoX + screen_width // 2, isoY + rombo_height*3 + rombo_height),
-                                         (isoX + screen_width // 2, isoY + rombo_height*3 + rombo_height + 44),
-                                         (isoX + screen_width // 2 - rombo_width//2, 
-                                                        isoY + rombo_height*3 + rombo_height//2 + 44),
-                                         (isoX + screen_width // 2 - rombo_width//2, 
-                                                        isoY + rombo_height*3 + rombo_height//2)])
-    pygame.draw.polygon(surface, color2, [(isoX + screen_width // 2, isoY + rombo_height*3 + rombo_height),
-                                         (isoX + screen_width // 2, isoY + rombo_height*3 + rombo_height + 44),
-                                         (isoX + screen_width // 2 - rombo_width//2, 
-                                                        isoY + rombo_height*3 + rombo_height//2 + 44),
-                                         (isoX + screen_width // 2 - rombo_width//2, 
-                                                        isoY + rombo_height*3 + rombo_height//2)], 1)
-    
-def generate_map():
-    map = []
-    for i in range(10):
-        r = []
-        for j in range(10):
-            r.append(random.randint(2,3))
-        map.append(r)
-    return map
-            
+             
 pygame.init()
 screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
 screen_width, screen_height = screen.get_size()
@@ -81,7 +25,7 @@ p = [0, 0]
 p2 = [0, 0]
 right, left, up, down = False, False, False, False
 
-map = generate_map()
+map = Some_Methods.generate_map(random.randint)
 prota = Protagonista(700,500, 4)
 Tile_Images.load_images(pygame)
 Entity_Images.load_images(pygame)
@@ -140,7 +84,7 @@ while running:
                 
     for y in range(len(map)):
         for x in range(len(map[y])):
-            isoX, isoY = cart_to_iso(x, y, rombo_height)
+            isoX, isoY = Some_Methods.cart_to_iso(x, y, rombo_height)
             #draw_tile(screen, (20, 10, 200), (255, 255, 255),isoX, isoY)
             #draw_tile(screen, (36, 100, 200), (255, 255, 255),isoX, isoY)  
             Tile_Images.draw_tile(screen, Tile_Images.lista_tiles[map[y][x]], isoX, isoY, screen_width, rombo_height, rombo_width)
