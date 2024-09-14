@@ -4,7 +4,7 @@ import math
 import random
 from entidades.protagonista import Protagonista
 from util.tile_images import Tile_Images
-from util.entity_images import Entity_Images
+from entidades.entity_images import Entity_Images
 from util.some_methods import Some_Methods
 
 rombo_height = 40

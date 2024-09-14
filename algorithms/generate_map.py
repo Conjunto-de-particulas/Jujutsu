@@ -1,8 +1,6 @@
-import random
-
 # Tamaño del mapa
-ANCHO = 10
-ALTO = 10
+ANCHO = 20
+ALTO = 20
 
 # Definimos los tipos de terreno
 AGUA = '~'        # Representa agua
@@ -13,7 +11,7 @@ MONTAÑA = '^'     # Representa montaña
 TERRENOS = [AGUA, PASTO, MONTAÑA]
 
 # Función para elegir el terreno basado en los vecinos
-def elegir_terreno_con_adyacentes(mapa, x, y):
+def elegir_terreno_con_adyacentes(mapa, x, y, random):
     # Pesos iniciales para los tipos de terreno
     pesos = {AGUA: 10, PASTO: 30, MONTAÑA: 2}
     
@@ -43,7 +41,7 @@ def obtener_vecinos(mapa, x, y):
     return vecinos
 
 # Función para generar el mapa proceduralmente con áreas coherentes
-def generar_mapa(ancho, alto):
+def generar_mapa(ancho, alto, random):
     mapa = [[None for _ in range(ancho)] for _ in range(alto)]
     for y in range(alto):
         for x in range(ancho):

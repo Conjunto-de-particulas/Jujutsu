@@ -58,6 +58,6 @@ class Some_Methods:
         for i in range(10):
             r = []
             for j in range(10):
-                r.append(randint(2,3))
+                r.append(randint(6,7))
             map.append(r)
         return map
